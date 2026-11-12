@@ -1,0 +1,117 @@
+<!doctype html>
+<html lang="et">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Reisirisk</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,560;9..144,650&family=Outfit:wght@400;500;600&display=swap"
+      rel="stylesheet"
+    />
+  </head>
+  <body>
+    <div id="map"></div>
+    <button id="theme-toggle" class="theme-toggle" type="button" aria-label="Lülita tumedale kujundusele" aria-pressed="false">
+      <span class="theme-icon" aria-hidden="true">◐</span>
+      <span class="theme-label">Tume vaade</span>
+    </button>
+
+    <main id="welcome" class="welcome-screen">
+      <div class="welcome-map" aria-hidden="true">
+        <span class="route route-one"></span>
+        <span class="route route-two"></span>
+        <span class="map-pin pin-one">♞</span>
+        <span class="map-pin pin-two"></span>
+        <span class="map-pin pin-three"></span>
+      </div>
+      <div class="welcome-content">
+        <p class="eyebrow"><span class="brand-mark" aria-hidden="true">♞</span> Reisirisk · sinu järgmine käik</p>
+        <h1>Planeeri targalt.<br /><span>Reisi kindlamalt.</span></h1>
+        <p class="welcome-lede">
+          Iga hea reis algab õigest käigust. Vaata sihtkoha riske, ilma ja teekonda enne, kui teekond algab.
+        </p>
+        <button id="begin-trip" class="start-button" type="button">
+          <span class="button-piece" aria-hidden="true">♞</span>
+          <span>Alusta reisi planeerimist</span>
+          <span class="button-arrow" aria-hidden="true">→</span>
+        </button>
+        <div class="welcome-steps" aria-label="Planeerimise kolm sammu">
+          <div><span>01</span><strong>Vali sihtkoht</strong></div>
+          <div><span>02</span><strong>Vaata riske</strong></div>
+          <div><span>03</span><strong>Reisi targemalt</strong></div>
+        </div>
+        <p class="welcome-note">Sinu reisi järgmine käik algab kaardilt.</p>
+        <a class="source-link" href="https://github.com/Titanic-bq/Reisirisk" target="_blank" rel="noopener noreferrer">
+          Vaata lähtekoodi GitHubis <span aria-hidden="true">↗</span>
+        </a>
+      </div>
+    </main>
+
+    <header class="topbar">
+      <p class="eyebrow">Peredele ja gruppidele</p>
+      <h1>Reisirisk</h1>
+      <p class="lede">
+        Liiguta positsioon sihtkohta. Ühes vaates on turvalisus, transport, ilm, liiklus, hinnad ja alternatiivid.
+      </p>
+    </header>
+
+    <div class="dock">
+      <div class="position-slot">
+        <div
+          id="position"
+          class="position"
+          role="img"
+          aria-label="Reisipositsioon. Lohista see kaardile, et näha riigi andmeid."
+        ></div>
+      </div>
+      <p id="dock-help">Lohista positsioon kaardile</p>
+    </div>
+
+    <div id="ghost" class="position ghost" hidden></div>
+    <div id="hover-tag" class="hover-tag" hidden></div>
+
+    <p id="status" class="sr-only" aria-live="polite"></p>
+    <aside id="panel">
+      <header class="panel-head">
+        <p class="eyebrow">Riigi ülevaade</p>
+        <h2 id="panel-title">Vali sihtkoht positsiooniga</h2>
+      </header>
+
+      <form id="group" class="group">
+        <div class="group-field">
+          <label for="adults">Täiskasvanuid</label>
+          <input id="adults" name="adults" type="number" min="1" max="12" value="2" />
+        </div>
+        <div class="group-field">
+          <label for="children">Lapsi</label>
+          <input id="children" name="children" type="number" min="0" max="10" value="1" />
+        </div>
+        <fieldset class="budget">
+          <legend>Eelarve</legend>
+          <div class="segment">
+            <label><input type="radio" name="budget" value="saastlik" /> Säästlik</label>
+            <label><input type="radio" name="budget" value="keskmine" checked /> Keskmine</label>
+            <label><input type="radio" name="budget" value="mugav" /> Mugav</label>
+          </div>
+        </fieldset>
+      </form>
+
+      <div id="briefing"></div>
+
+      <footer class="panel-foot">
+        <label class="booked">
+          <input id="booked" type="checkbox" />
+          <span>Reis on broneeritud</span>
+        </label>
+        <p class="legend">
+          Skoor 1 on soodne olukord, skoor 5 on kõrge risk. Turvalisus, hinnad ja hoiatused on näidisandmed.
+          Ilm tuleb valitud positsiooni kohta otse ilmateenistusest.
+        </p>
+      </footer>
+    </aside>
+
+    <script type="module" src="/src/main.js"></script>
+  </body>
+</html>
