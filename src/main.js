@@ -93,7 +93,7 @@ function setTheme(theme) {
   themeToggle.querySelector(".theme-icon").textContent = isDark ? "☀" : "◐";
 }
 
-setTheme("light");
+setTheme("dark");
 L.control.scale({ imperial: false, metric: true, position: "bottomleft" }).addTo(map);
 
 const state = {
