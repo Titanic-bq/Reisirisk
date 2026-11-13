@@ -138,12 +138,6 @@ input:focus-visible {
   letter-spacing: 0.08em;
 }
 
-.brand-mark {
-  display: inline-flex;
-  align-items: center;
-  gap: 11px;
-}
-
 .brand-token {
   position: relative;
   display: grid;
@@ -151,49 +145,18 @@ input:focus-visible {
   height: 42px;
   flex: 0 0 auto;
   place-items: center;
-  border: 1.5px solid var(--accent-strong);
+  overflow: hidden;
+  border: 1px solid var(--line);
   border-radius: 50%;
-  color: var(--accent-strong);
-  background:
-    radial-gradient(circle, var(--surface) 0 59%, transparent 60%),
-    conic-gradient(from 0deg, var(--accent-strong) 0deg 3deg, transparent 3deg 87deg, var(--accent-strong) 87deg 93deg, transparent 93deg 177deg, var(--accent-strong) 177deg 183deg, transparent 183deg 267deg, var(--accent-strong) 267deg 273deg, transparent 273deg);
+  background: var(--surface);
   box-shadow: inset 0 0 0 4px var(--surface), 0 4px 12px rgb(34 35 31 / 12%);
 }
 
-.brand-token::before {
-  position: absolute;
-  inset: 5px;
-  border: 1px solid color-mix(in srgb, var(--accent) 40%, var(--line));
-  border-radius: 50%;
-  content: "";
-}
-
-.brand-horse {
-  position: relative;
-  z-index: 1;
+.position-logo,
+.position-logo svg {
   display: block;
-  font-family: Georgia, serif;
-  font-size: 25px;
-  line-height: 1;
-  transform: translateY(-1px);
-}
-
-.brand-token-small {
-  width: 34px;
-  height: 34px;
-  border-color: #994225;
-  color: #994225;
-  background:
-    radial-gradient(circle, #fffefa 0 59%, transparent 60%),
-    conic-gradient(from 0deg, #994225 0deg 3deg, transparent 3deg 87deg, #994225 87deg 93deg, transparent 93deg 177deg, #994225 177deg 183deg, transparent 183deg 267deg, #994225 267deg 273deg, transparent 273deg);
-}
-
-.brand-token-small::before {
-  inset: 4px;
-}
-
-.brand-token-small .brand-horse {
-  font-size: 20px;
+  width: 100%;
+  height: 100%;
 }
 
 .welcome-content h1 {
@@ -256,10 +219,16 @@ input:focus-visible {
   display: grid;
   width: 31px;
   height: 31px;
+  flex: 0 0 31px;
   place-items: center;
   border: 1px solid currentColor;
   border-radius: 50%;
-  font-size: 1.15rem;
+  overflow: hidden;
+}
+
+.button-piece .position-logo {
+  width: 27px;
+  height: 27px;
 }
 
 .button-arrow {
@@ -331,60 +300,52 @@ input:focus-visible {
   height: 100%;
 }
 
-.map-grid {
+.map-graticule {
   fill: none;
   stroke: var(--line);
-  stroke-dasharray: 2 9;
+  stroke-dasharray: 3 8;
   stroke-width: 1;
-  opacity: 0.62;
+  opacity: 0.7;
 }
 
-.landmass {
+.map-countries {
   fill: color-mix(in srgb, var(--accent) 13%, var(--surface));
-  stroke: color-mix(in srgb, var(--accent) 32%, var(--line));
-  stroke-width: 2;
+  stroke: color-mix(in srgb, var(--accent) 32%, var(--muted));
+  stroke-linejoin: round;
+  stroke-width: 0.7;
 }
 
-.route-line {
+.map-route {
   fill: none;
   stroke: var(--accent-strong);
-  stroke-dasharray: 7 11;
+  stroke-dasharray: 5 8;
   stroke-linecap: round;
-  stroke-width: 4;
+  stroke-linejoin: round;
+  stroke-width: 2.5;
   opacity: 0.9;
 }
 
-.map-pin {
-  position: absolute;
-  z-index: 2;
-  display: grid;
-  place-items: center;
-  filter: drop-shadow(0 5px 9px rgb(34 35 31 / 18%));
+.map-stop circle:first-child {
+  fill: var(--surface);
+  stroke: var(--accent-strong);
+  stroke-width: 2;
 }
 
-.pin-one {
-  top: 26%;
-  left: 13%;
+.map-stop path {
+  fill: none;
+  stroke: var(--accent-strong);
+  stroke-linecap: round;
+  stroke-width: 1.5;
 }
 
-.pin-two {
-  top: 43%;
-  left: 53%;
-  width: 20px;
-  height: 20px;
-  border: 5px solid var(--surface);
-  border-radius: 50%;
-  background: var(--accent-strong);
+.map-stop circle:last-child,
+.map-stop-secondary circle {
+  fill: var(--accent-strong);
 }
 
-.pin-three {
-  top: 67%;
-  left: 77%;
-  width: 24px;
-  height: 24px;
-  border: 6px solid var(--surface);
-  border-radius: 50%;
-  background: #49805f;
+.map-stop-secondary circle {
+  stroke: var(--surface);
+  stroke-width: 2;
 }
 
 .map-label {
@@ -452,12 +413,8 @@ input:focus-visible {
 }
 
 .site-logo {
-  width: 48px;
-  height: 48px;
-}
-
-.site-logo .brand-horse {
-  font-size: 28px;
+  width: 52px;
+  height: 52px;
 }
 
 .topbar-brand .eyebrow {
