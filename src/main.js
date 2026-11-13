@@ -52,33 +52,7 @@ const welcomeProjection = geoNaturalEarth1().fitExtent(
   worldFeatures,
 );
 const welcomePath = geoPath(welcomeProjection);
-const route = {
-  type: "LineString",
-  coordinates: [
-    [24.7536, 59.437],
-    [12.4964, 41.9028],
-    [-9.1393, 38.7223],
-  ],
-};
-const routePoints = route.coordinates.map((coordinates) =>
-  welcomeProjection(coordinates),
-);
-welcomeMap.innerHTML = `
-  <path class="map-graticule" d="${welcomePath({
-    type: "Sphere",
-  })}" />
-  <path class="map-countries" d="${welcomePath(worldFeatures)}" />
-  <path class="map-route" d="${welcomePath(route)}" />
-  <g class="map-stop" transform="translate(${routePoints[0].join(" ")})">
-    <circle r="19" />
-    <path d="M0-12v5m0 14v5m-12-12h5m14 0h5" />
-    <circle r="2" />
-  </g>
-  <g class="map-stop map-stop-secondary">
-    <circle cx="${routePoints[1][0]}" cy="${routePoints[1][1]}" r="6" />
-    <circle cx="${routePoints[2][0]}" cy="${routePoints[2][1]}" r="6" />
-  </g>
-`;
+welcomeMap.innerHTML = `<path class="map-countries" d="${welcomePath(worldFeatures)}" />`;
 
 const map = L.map("map", {
   zoomControl: false,
